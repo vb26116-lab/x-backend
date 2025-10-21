@@ -19,15 +19,20 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()
 
-ENVIRONMENT = os.getenv("ENVIRONMENT", "local")
+# ENVIRONMENT = os.getenv("ENVIRONMENT", "local")
 
-if ENVIRONMENT == "production":
-    allowed_origins = [os.getenv("CORS_ORIGINS_PROD")]
-else:
-    # allowed_origins = [os.getenv("CORS_ORIGINS_LOCAL")]
-    allowed_origins = "*"
+# if ENVIRONMENT == "production":
+#     allowed_origins = [os.getenv("CORS_ORIGINS_PROD")]
+# else:
+#     # allowed_origins = [os.getenv("CORS_ORIGINS_LOCAL")]
+#     allowed_origins = "*"
     
-logger.info(f"Allowed Origins: {allowed_origins}")
+# logger.info(f"Allowed Origins: {allowed_origins}")
+
+origins = [
+    "https://your-frontend-domain.com",  # e.g., your Render web app
+    "http://localhost:5173",             # for local testing if you use Vite
+]
 
 # Lifespan event to initialize DB on startup
 @asynccontextmanager
@@ -48,7 +53,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
