@@ -30,8 +30,8 @@ load_dotenv()
 # logger.info(f"Allowed Origins: {allowed_origins}")
 
 origins = [
-    "https://your-frontend-domain.com",  # e.g., your Render web app
-    "http://localhost:5173",             # for local testing if you use Vite
+    "https://frontendx-zeta.vercel.app/",  
+    "http://localhost:5173",            
 ]
 
 # Lifespan event to initialize DB on startup
