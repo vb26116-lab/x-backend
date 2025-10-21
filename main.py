@@ -30,8 +30,8 @@ load_dotenv()
 # logger.info(f"Allowed Origins: {allowed_origins}")
 
 origins = [
-    "https://frontendx-zeta.vercel.app/",  
-    "http://localhost:5173",            
+    "https://frontendx-zeta.vercel.app",  
+    "http://localhost:5173",
 ]
 
 # Lifespan event to initialize DB on startup
